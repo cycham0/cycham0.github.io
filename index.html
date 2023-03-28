@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reading Passage with Multiple-Choice Questions</title>
+</head>
+<body>
+	<h1>Reading Passage Title</h1>
+	<p>Reading passage content goes here.</p>
+	
+	<form onsubmit="return checkAnswers()">
+		<h2>Multiple-Choice Questions</h2>
+		<p>Question 1: What is the answer to question 1?</p>
+		<input type="radio" name="question1" value="option1"> Option 1<br>
+		<input type="radio" name="question1" value="option2"> Option 2<br>
+		<input type="radio" name="question1" value="option3"> Option 3<br>
+		<p id="answer1"></p>
+		<p>Question 2: What is the answer to question 2?</p>
+		<input type="radio" name="question2" value="option1"> Option 1<br>
+		<input type="radio" name="question2" value="option2"> Option 2<br>
+		<input type="radio" name="question2" value="option3"> Option 3<br>
+		<p id="answer2"></p>
+		<button type="submit">Submit</button>
+	</form>
+
+	<script>
+		function checkAnswers() {
+			var answer1 = document.getElementsByName("question1");
+			var answer2 = document.getElementsByName("question2");
+			var correct1 = "option2";
+			var correct2 = "option3";
+			var score = 0;
+
+			if (answer1[1].checked) {
+				document.getElementById("answer1").innerHTML = "Correct!";
+				score++;
+			} else {
+				document.getElementById("answer1").innerHTML = "Incorrect. The correct answer is Option 2.";
+			}
+
+			if (answer2[2].checked) {
+				document.getElementById("answer2").innerHTML = "Correct!";
+				score++;
+			} else {
+				document.getElementById("answer2").innerHTML = "Incorrect. The correct answer is Option 3.";
+			}
+
+			if (score == 2) {
+				alert("Congratulations, you got all the answers correct!");
+			} else {
+				alert("You got " + score + " out of 2 questions correct. Please try again.");
+			}
+
+			return false;
+		}
+	</script>
+</body>
+</html>
